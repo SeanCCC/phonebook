@@ -32,10 +32,10 @@ run: $(EXEC)
 cache-test: $(EXEC)
 	perf stat --repeat 100 \
 		-e cache-misses,cache-references,instructions,cycles \
-		./phonebook_orig
+		./phonebook_orig > /dev/null
 	perf stat --repeat 100 \
 		-e cache-misses,cache-references,instructions,cycles \
-		./phonebook_opt
+		./phonebook_opt > /dev/null
 
 output.txt: cache-test calculate
 	./calculate
